@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:single": "npm run build && node scripts/bundle-single-file.mjs",
     "preview": "vite preview",
+    "phone": "vite --host 0.0.0.0",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

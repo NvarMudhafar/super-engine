@@ -52,7 +52,7 @@ const NAV: Array<{ view: ViewId; label: string; icon: string; group: string }> =
 export default function App() {
   const [route, setRoute] = useState<Route>(parseHash);
   const [theme, setTheme] = useTheme();
-  const { data, undo, canUndo } = useStore();
+  const { data, undo, canUndo, saveFailed } = useStore();
 
   useEffect(() => {
     const onHash = () => {
@@ -158,6 +158,19 @@ export default function App() {
       </aside>
 
       <main className="main">
+        {saveFailed ? (
+          <div className="page" style={{ marginBottom: 18 }}>
+            <div className="callout" style={{ borderLeftColor: 'var(--bad)' }}>
+              <span aria-hidden="true">⚠</span>
+              <span>
+                This browser is not letting the planner save — private browsing, a full disk or
+                blocked storage will do that. Your changes are held for this session only and will
+                be lost on reload. Use <a href="#/settings">Settings &amp; data → Export</a> now to
+                keep them.
+              </span>
+            </div>
+          </div>
+        ) : null}
         {route.view === 'overview' && <Overview />}
         {route.view === 'cities' &&
           (route.param ? <CityDetail cityId={route.param} /> : <Cities />)}

@@ -52,6 +52,25 @@ cherry-pick. Everything lands in your own editable lists.
 **Checklist** — documents, the bookings that sell out, what to pack, what to do
 on arrival. Pre-loaded for Spain; add your own.
 
+## Using it on a phone
+
+The layout adapts down to phone width: the sidebar becomes a scrolling tab
+strip, forms open full-screen, and row actions are always visible (there is no
+hover on a touchscreen). Three ways to get it onto a phone:
+
+```bash
+npm run phone          # serves on your local network — visit http://<your-ip>:5173
+npm run build:single   # one self-contained HTML file in dist/
+```
+
+`build:single` inlines the CSS and JS into `dist/planner-standalone.html` with no
+external requests at all, so it runs from a file, from any static host, or from
+behind a strict CSP.
+
+**Each device keeps its own data.** Storage is per-browser, so a phone and a
+laptop are two separate copies no matter how you serve it. Export a JSON backup
+from one and import it on the other to move a plan across — there is no sync.
+
 ## Notes on the data
 
 - Everything lives in `localStorage` under `spain-trip-planner/v1`. Clearing site

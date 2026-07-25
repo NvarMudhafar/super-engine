@@ -1422,6 +1422,50 @@ tbody tr:hover {
   }
 }
 
+/* -------------------------------------------------------------- touch input */
+
+/*
+ * Row actions are revealed on hover at a desk. A touchscreen has no hover, so
+ * without this they are permanently invisible and the rows cannot be edited.
+ */
+@media (hover: none) {
+  .item-actions {
+    opacity: 1;
+  }
+}
+
+@media (pointer: coarse) {
+  .btn {
+    min-height: 38px;
+  }
+
+  .btn-sm {
+    min-height: 32px;
+    padding: 6px 10px;
+  }
+
+  .btn-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .check input[type='checkbox'] {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* iOS Safari zooms the viewport when focusing a field under 16px. */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  .day-add {
+    padding: 8px 12px;
+  }
+}
+
 /* ------------------------------------------------------------ narrow view */
 
 @media (max-width: 860px) {
@@ -1429,22 +1473,88 @@ tbody tr:hover {
     grid-template-columns: 1fr;
   }
 
+  /* Brand and theme/undo share the top row; nav scrolls horizontally below. */
   .sidebar {
-    position: static;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: grid;
+    grid-template-areas: 'brand foot' 'nav nav';
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
     height: auto;
+    padding: 10px 12px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .brand {
+    grid-area: brand;
+    padding: 0 0 8px;
+  }
+
+  .sidebar-foot {
+    grid-area: foot;
+    padding: 0 0 8px;
+    border-top: 0;
   }
 
   .nav {
+    grid-area: nav;
+    flex: none;
     flex-direction: row;
-    flex-wrap: wrap;
+    gap: 6px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Dissolve the group wrappers so each button is a flex item of the strip. */
+  .nav > div {
+    display: contents;
   }
 
   .nav-label {
     display: none;
   }
 
+  .nav-item {
+    flex: none;
+    width: auto !important;
+    padding: 7px 12px;
+    border: 1px solid var(--line);
+    white-space: nowrap;
+  }
+
   .main {
     padding: 18px 16px 60px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .page-head {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .page-actions {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .stat-value {
+    font-size: 23px;
+  }
+
+  .stat-value.sm {
+    font-size: 19px;
   }
 
   .day {
@@ -1454,6 +1564,70 @@ tbody tr:hover {
 
   .day-date {
     position: static;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .day-date .row {
+    margin-top: 0 !important;
+  }
+
+  .bar-row {
+    grid-template-columns: 88px minmax(0, 1fr) auto;
+    gap: 8px;
+  }
+
+  .timeline-seg {
+    padding: 0 5px;
+    font-size: 10.5px;
+  }
+
+  /* Forms take the whole screen — no tiny dialog on a phone. */
+  .modal-backdrop {
+    padding: 0;
+    place-items: stretch;
+  }
+
+  .modal {
+    display: flex;
+    flex-direction: column;
+    max-width: none;
+    min-height: 100%;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .modal-head {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--surface-1);
+  }
+
+  .modal-body {
+    flex: 1;
+  }
+
+  .modal-foot {
+    position: sticky;
+    bottom: 0;
+    border-radius: 0;
+  }
+
+  /* Cost and row actions drop to their own line under the content. */
+  .item {
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+
+  .item-main {
+    flex: 1 1 100%;
+  }
+
+  .item-actions {
+    margin-left: auto;
   }
 }
 

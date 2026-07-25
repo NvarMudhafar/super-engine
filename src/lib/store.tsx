@@ -26,6 +26,31 @@ const THEME_KEY = 'spain-trip-planner/theme';
 
 export const DATA_VERSION = 1;
 
+/**
+ * localStorage throws rather than returning null in a few real situations —
+ * Safari private mode, a sandboxed iframe, a full quota, storage blocked by
+ * policy. Every access goes through these so a storage failure degrades to
+ * "this session isn't saved" instead of a blank page.
+ */
+const storage = {
+  get(key: string): string | null {
+    try {
+      return localStorage.getItem(key);
+    } catch {
+      return null;
+    }
+  },
+  set(key: string, value: string): boolean {
+    try {
+      localStorage.setItem(key, value);
+      return true;
+    } catch {
+      return false;
+    }
+  },
+};
+
+
 /** Collections that hold `{ id }` records, keyed by their field name. */
 type Collections = Pick<
   TripData,
@@ -47,6 +72,8 @@ export interface Store {
   load: (next: TripData) => void;
   undo: () => void;
   canUndo: boolean;
+  /** True when saving to this browser has failed — changes are session-only. */
+  saveFailed: boolean;
 }
 
 const StoreContext = createContext<Store | null>(null);
@@ -73,9 +100,9 @@ function normalize(raw: unknown): TripData {
 }
 
 function read(): TripData {
+  const raw = storage.get(STORAGE_KEY);
+  if (!raw) return starterTrip();
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return starterTrip();
     return normalize(JSON.parse(raw));
   } catch {
     return starterTrip();
@@ -86,16 +113,14 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [data, setData] = useState<TripData>(read);
   const history = useRef<TripData[]>([]);
   const [canUndo, setCanUndo] = useState(false);
+  const [saveFailed, setSaveFailed] = useState(false);
 
   // Debounced write, so a burst of keystrokes in a form is one save.
   useEffect(() => {
     const t = setTimeout(() => {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-      } catch {
-        // Storage full or blocked (private mode). The app keeps working from
-        // memory; Settings → Export is the escape hatch.
-      }
+      // On failure the app keeps working from memory for this session;
+      // Settings → Export is the escape hatch, and the banner says so.
+      setSaveFailed(!storage.set(STORAGE_KEY, JSON.stringify(data)));
     }, 250);
     return () => clearTimeout(t);
   }, [data]);
@@ -145,8 +170,9 @@ export function StoreProvider({ children }: { children: ReactNode }) {
           return prior;
         }),
       canUndo,
+      saveFailed,
     }),
-    [data, commit, canUndo],
+    [data, commit, canUndo, saveFailed],
   );
 
   return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>;
@@ -169,14 +195,14 @@ export type Theme = 'light' | 'dark';
 
 export function useTheme(): [Theme, (t: Theme) => void] {
   const [theme, setTheme] = useState<Theme>(() => {
-    const stored = localStorage.getItem(THEME_KEY);
+    const stored = storage.get(THEME_KEY);
     if (stored === 'light' || stored === 'dark') return stored;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   });
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
-    localStorage.setItem(THEME_KEY, theme);
+    storage.set(THEME_KEY, theme);
   }, [theme]);
 
   return [theme, setTheme];
