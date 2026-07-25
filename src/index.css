@@ -1616,6 +1616,16 @@ tbody tr:hover {
     border-radius: 0;
   }
 
+  /* A long card title must not be squeezed to one word per line by its own
+     controls — give it the full width and let the controls sit beneath. */
+  .card-head {
+    flex-wrap: wrap;
+  }
+
+  .card-head h2 {
+    flex: 1 1 100%;
+  }
+
   /* Cost and row actions drop to their own line under the content. */
   .item {
     flex-wrap: wrap;

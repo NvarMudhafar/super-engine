@@ -1,12 +1,13 @@
 import { useRef, useState } from 'react';
 import { Area, Card, Money, Select, Text, Toggle } from '../components/ui';
+import SyncCard from '../components/SyncCard';
 import { defaultChecklist, emptyTrip, sampleTrip } from '../lib/seed';
 import { DATA_VERSION, useStore } from '../lib/store';
 import { daysBetween, money, pluralize, slug, todayISO } from '../lib/util';
 
 const CURRENCIES = ['EUR', 'USD', 'GBP', 'CAD', 'AUD', 'CHF', 'SEK', 'JPY'];
 
-export default function Settings() {
+export default function Settings({ incomingCode }: { incomingCode?: string }) {
   const { data, setTrip, load } = useStore();
   const { trip } = data;
   const fileInput = useRef<HTMLInputElement>(null);
@@ -62,6 +63,12 @@ export default function Settings() {
           </div>
         </div>
       </div>
+
+      {/*
+        Arriving from a transfer link, the merge prompt is the only thing the
+        viewer came for — put it first rather than three cards down the page.
+      */}
+      {incomingCode ? <SyncCard incomingCode={incomingCode} /> : null}
 
       <Card title="The trip">
         <div className="stack">
@@ -168,9 +175,10 @@ export default function Settings() {
       <Card title="Your data" note={`format v${DATA_VERSION}`}>
         <div className="stack">
           <p className="small muted">
-            This planner keeps everything in this browser's local storage on this computer — no
+            This planner keeps everything in this browser's local storage on this device — no
             account, no server, nothing leaves the machine. That also means clearing site data wipes
-            it, and it will not appear on your phone. Export a backup file now and then.
+            it, and another device starts empty. Export a backup file now and then, and use the
+            transfer below to move a plan between your phone and computer.
           </p>
 
           <div className="small">
@@ -208,6 +216,8 @@ export default function Settings() {
           {status ? <div className="callout">{status}</div> : null}
         </div>
       </Card>
+
+      {incomingCode ? null : <SyncCard />}
 
       <Card title="Start over">
         <div className="stack">

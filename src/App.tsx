@@ -15,10 +15,20 @@ import Settings from './views/Settings';
 interface Route {
   view: ViewId;
   param?: string;
+  /** Transfer code carried in by a `#/receive/<code>` link. */
+  receive?: string;
 }
 
 function parseHash(): Route {
   const raw = window.location.hash.replace(/^#\/?/, '');
+
+  // A transfer link is `#/receive/<code>`. The code is base64url so it has no
+  // slashes of its own, but take everything after the first one regardless
+  // rather than letting split() truncate it.
+  if (raw.startsWith('receive/')) {
+    return { view: 'settings', param: undefined, receive: raw.slice('receive/'.length) };
+  }
+
   const [view, param] = raw.split('/');
   const known: ViewId[] = [
     'overview',
@@ -179,7 +189,7 @@ export default function App() {
         {route.view === 'budget' && <Budget />}
         {route.view === 'checklist' && <Checklist />}
         {route.view === 'library' && <Library />}
-        {route.view === 'settings' && <Settings />}
+        {route.view === 'settings' && <Settings incomingCode={route.receive} />}
       </main>
     </div>
   );

@@ -67,9 +67,31 @@ npm run build:single   # one self-contained HTML file in dist/
 external requests at all, so it runs from a file, from any static host, or from
 behind a strict CSP.
 
-**Each device keeps its own data.** Storage is per-browser, so a phone and a
-laptop are two separate copies no matter how you serve it. Export a JSON backup
-from one and import it on the other to move a plan across — there is no sync.
+## Moving a plan between devices
+
+Storage is per-browser, so a phone and a laptop are two separate copies. There
+is no server, so they cannot sync by themselves — instead *Settings & data →
+Move this plan to another device* packs the whole plan into a code you carry
+across, then merges it in.
+
+- **Send** produces a link and a bare code. Message the link to yourself, open
+  it on the other device, and the planner goes straight to the merge prompt.
+  Plans too large to survive as a link say so and fall back to the code.
+- **Merge** is record-granular last-write-wins: for each hotel, restaurant,
+  sight, leg and note, the copy you edited most recently wins whole — never a
+  half-and-half record neither device ever had. Records that exist on only one
+  side are kept. Anything you deleted stays deleted, because deletions leave
+  tombstones (`deleted` in the document) that outrank older edits.
+- Merging is **idempotent and order-independent** — merging twice changes
+  nothing more, and A→B gives the same set as B→A.
+- Trip name, dates, party size and budget are the one thing that is *not*
+  merged silently: with no clear winner the local copy stays, and the receive
+  screen offers an explicit checkbox to take the incoming ones instead.
+
+The merge rules are covered by `npm test`.
+
+Compression uses `CompressionStream` (Safari 16.4+), falling back to plain
+base64 where that is missing.
 
 ## Notes on the data
 

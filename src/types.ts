@@ -3,6 +3,16 @@ export type ID = string;
 /** ISO date, `YYYY-MM-DD`. */
 export type DateStr = string;
 
+/**
+ * Every stored record carries the epoch-ms of its last edit. Merging two
+ * devices is field-blind and record-granular: the newer version of a record
+ * wins whole. Optional because documents saved before sync existed lack it —
+ * those count as oldest.
+ */
+export interface Stamped {
+  updatedAt?: number;
+}
+
 export type BookingStatus = 'idea' | 'booked' | 'paid';
 
 export type ReservationStatus = 'not-needed' | 'todo' | 'requested' | 'confirmed';
@@ -32,7 +42,7 @@ export type BudgetCategory =
   | 'Shopping'
   | 'Other';
 
-export interface Trip {
+export interface Trip extends Stamped {
   name: string;
   startDate: DateStr;
   endDate: DateStr;
@@ -47,7 +57,7 @@ export interface Trip {
   notes: string;
 }
 
-export interface City {
+export interface City extends Stamped {
   id: ID;
   name: string;
   region: string;
@@ -58,7 +68,7 @@ export interface City {
   accent: number;
 }
 
-export interface Stay {
+export interface Stay extends Stamped {
   id: ID;
   cityId: ID;
   name: string;
@@ -73,7 +83,7 @@ export interface Stay {
   notes: string;
 }
 
-export interface Restaurant {
+export interface Restaurant extends Stamped {
   id: ID;
   cityId: ID;
   name: string;
@@ -92,7 +102,7 @@ export interface Restaurant {
   visited: boolean;
 }
 
-export interface Place {
+export interface Place extends Stamped {
   id: ID;
   cityId: ID;
   name: string;
@@ -109,7 +119,7 @@ export interface Place {
   done: boolean;
 }
 
-export interface Leg {
+export interface Leg extends Stamped {
   id: ID;
   mode: TransportMode;
   /** City id, or a free-text label for anywhere that isn't a trip city. */
@@ -126,7 +136,7 @@ export interface Leg {
   notes: string;
 }
 
-export interface Expense {
+export interface Expense extends Stamped {
   id: ID;
   label: string;
   category: BudgetCategory;
@@ -137,7 +147,7 @@ export interface Expense {
   notes: string;
 }
 
-export interface ChecklistItem {
+export interface ChecklistItem extends Stamped {
   id: ID;
   label: string;
   group: string;
@@ -145,7 +155,7 @@ export interface ChecklistItem {
 }
 
 /** One entry on a day of the itinerary. */
-export interface Block {
+export interface Block extends Stamped {
   id: ID;
   date: DateStr;
   time: string;
@@ -158,6 +168,12 @@ export interface Block {
 
 export interface TripData {
   version: number;
+  /**
+   * Deleted record ids → when they were deleted (epoch ms). Without these a
+   * merge cannot tell "deleted here" from "not yet created there", and every
+   * reconcile would resurrect everything you had thrown away.
+   */
+  deleted?: Record<ID, number>;
   trip: Trip;
   cities: City[];
   stays: Stay[];

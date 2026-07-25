@@ -10,7 +10,8 @@
     "build:single": "npm run build && node scripts/bundle-single-file.mjs",
     "preview": "vite preview",
     "phone": "vite --host 0.0.0.0",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "tsc src/lib/transfer.ts --outDir dist-test --module esnext --target es2022 --moduleResolution bundler --skipLibCheck && node --test src/lib/transfer.test.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

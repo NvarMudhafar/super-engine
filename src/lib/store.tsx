@@ -87,6 +87,7 @@ function normalize(raw: unknown): TripData {
     (Array.isArray(d[key]) ? d[key] : base[key]) as Collections[K];
   return {
     version: DATA_VERSION,
+    deleted: d.deleted && typeof d.deleted === 'object' ? d.deleted : {},
     trip: { ...base.trip, ...(d.trip ?? {}) },
     cities: list('cities'),
     stays: list('stays'),
@@ -139,16 +140,28 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const store = useMemo<Store>(
     () => ({
       data,
-      setTrip: (patch) => commit((prev) => ({ ...prev, trip: { ...prev.trip, ...patch } })),
+      // Every mutation stamps `updatedAt` itself, so no caller has to remember
+      // to — the merge in lib/transfer.ts is only correct if this is total.
+      setTrip: (patch) =>
+        commit((prev) => ({
+          ...prev,
+          trip: { ...prev.trip, ...patch, updatedAt: Date.now() },
+        })),
       add: (key, item) =>
-        commit((prev) => ({ ...prev, [key]: [...(prev[key] as unknown[]), item] }) as TripData),
+        commit(
+          (prev) =>
+            ({
+              ...prev,
+              [key]: [...(prev[key] as unknown[]), { ...item, updatedAt: Date.now() }],
+            }) as TripData,
+        ),
       update: (key, id, patch) =>
         commit(
           (prev) =>
             ({
               ...prev,
               [key]: (prev[key] as Array<{ id: ID }>).map((it) =>
-                it.id === id ? { ...it, ...patch } : it,
+                it.id === id ? { ...it, ...patch, updatedAt: Date.now() } : it,
               ),
             }) as TripData,
         ),
@@ -157,10 +170,22 @@ export function StoreProvider({ children }: { children: ReactNode }) {
           (prev) =>
             ({
               ...prev,
+              deleted: { ...(prev.deleted ?? {}), [id]: Date.now() },
               [key]: (prev[key] as Array<{ id: ID }>).filter((it) => it.id !== id),
             }) as TripData,
         ),
-      replace: (key, items) => commit((prev) => ({ ...prev, [key]: items }) as TripData),
+      // Bulk replace is also a bulk delete (e.g. "clear done"), so anything
+      // that disappeared has to be tombstoned or the next merge revives it.
+      replace: (key, items) =>
+        commit((prev) => {
+          const kept = new Set((items as Array<{ id: ID }>).map((it) => it.id));
+          const now = Date.now();
+          const deleted = { ...(prev.deleted ?? {}) };
+          for (const it of prev[key] as Array<{ id: ID }>) {
+            if (!kept.has(it.id)) deleted[it.id] = now;
+          }
+          return { ...prev, deleted, [key]: items } as TripData;
+        }),
       load: (next) => commit(() => normalize(next)),
       undo: () =>
         setData((prev) => {
