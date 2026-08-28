@@ -1,0 +1,193 @@
+{
+  "demand": {
+    "total": 24645000.0,
+    "percap": 0.5357608695652174,
+    "cagr": 0.065,
+    "segments": [
+      [
+        "New formal residential completions",
+        6345000.0,
+        "units/yr x m2/unit (55% drywall penetration)"
+      ],
+      [
+        "Residential renovation & re-ceiling",
+        6300000.0,
+        "2% of ~7.0M dwelling stock x m2"
+      ],
+      [
+        "Commercial, retail, offices, hotels",
+        2500000.0,
+        "fit-out m2"
+      ],
+      [
+        "Institutional (schools, health, govt)",
+        2000000.0,
+        "m2"
+      ],
+      [
+        "Post-conflict reconstruction",
+        3500000.0,
+        "Mosul/Anbar/Salah al-Din, m2"
+      ],
+      [
+        "Informal & self-build",
+        4000000.0,
+        "m2"
+      ]
+    ],
+    "proj": {
+      "2026": 24645000.0,
+      "2027": 26246925.0,
+      "2028": 27952975.124999996,
+      "2029": 29769918.508125,
+      "2030": 31704963.21115312,
+      "2031": 33765785.819878064,
+      "2032": 35960561.89817014,
+      "2033": 38297998.4215512
+    }
+  },
+  "sites": {
+    "criteria": [
+      [
+        "Gypsum resource proximity & quality",
+        0.22
+      ],
+      [
+        "Market access (Baghdad + national)",
+        0.2
+      ],
+      [
+        "Power & fuel availability",
+        0.15
+      ],
+      [
+        "Security & operating stability",
+        0.15
+      ],
+      [
+        "Road logistics & infrastructure",
+        0.1
+      ],
+      [
+        "Labour availability & skills",
+        0.08
+      ],
+      [
+        "Investment incentives & land",
+        0.06
+      ],
+      [
+        "Water availability",
+        0.04
+      ]
+    ],
+    "scores": {
+      "Kubaisa / Hit (Anbar)": 6.32,
+      "Ramadi outskirts (Hwy 11)": 7.270000000000001,
+      "Amiriyat al-Fallujah (Anbar)": 7.5600000000000005,
+      "Karbala industrial zone": 6.8,
+      "Baghdad (Taji / Abu Ghraib)": 6.840000000000001
+    },
+    "raw": {
+      "Kubaisa / Hit (Anbar)": [
+        10,
+        5,
+        4,
+        6,
+        5,
+        5,
+        8,
+        6
+      ],
+      "Ramadi outskirts (Hwy 11)": [
+        8,
+        7,
+        6,
+        7,
+        8,
+        7,
+        8,
+        8
+      ],
+      "Amiriyat al-Fallujah (Anbar)": [
+        6,
+        9,
+        7,
+        7,
+        9,
+        8,
+        8,
+        8
+      ],
+      "Karbala industrial zone": [
+        3,
+        8,
+        7,
+        9,
+        8,
+        8,
+        7,
+        7
+      ],
+      "Baghdad (Taji / Abu Ghraib)": [
+        2,
+        10,
+        7,
+        7,
+        9,
+        9,
+        6,
+        8
+      ]
+    },
+    "rank": [
+      [
+        "Amiriyat al-Fallujah (Anbar)",
+        7.5600000000000005
+      ],
+      [
+        "Ramadi outskirts (Hwy 11)",
+        7.270000000000001
+      ],
+      [
+        "Baghdad (Taji / Abu Ghraib)",
+        6.840000000000001
+      ],
+      [
+        "Karbala industrial zone",
+        6.8
+      ],
+      [
+        "Kubaisa / Hit (Anbar)",
+        6.32
+      ]
+    ]
+  },
+  "landed": {
+    "items": [
+      [
+        "Turkish ex-works",
+        1.85
+      ],
+      [
+        "Road freight to Baghdad (~1,300 km)",
+        0.34
+      ],
+      [
+        "Customs duty (10%) + reconstruction levy (5%)",
+        0.28
+      ],
+      [
+        "Clearance, handling, demurrage",
+        0.09
+      ],
+      [
+        "Importer margin",
+        0.22
+      ]
+    ],
+    "total": 2.78,
+    "dom_cash": 1.2778,
+    "dom_px": 2.212
+  }
+}

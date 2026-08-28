@@ -1,0 +1,1048 @@
+{
+  "tech": {
+    "inst_rate": 1800.0,
+    "nameplate": 11975040.0,
+    "sustainable": 9979200.0,
+    "price": 2.2119999999999997,
+    "stucco": 7.055000000000001,
+    "paper": 0.4196,
+    "rock_per_t": 1.3873125804521635,
+    "stucco_board": 70403.256,
+    "stucco_total": 110403.256,
+    "rock": 166482.41953443564,
+    "thermal": 19.114795395963746,
+    "free_water": 4.330695831898037,
+    "stucco_cost": 20.615723357831477,
+    "power": 0.0658,
+    "fuel_GJ": 7.799442896935934,
+    "headcount": 138,
+    "ore_purity": 0.9
+  },
+  "products": {
+    "12.5 mm standard (Type A)": {
+      "share": 0.62,
+      "price": 2.15,
+      "stucco": 7.4,
+      "paper": 0.42
+    },
+    "9.5 mm standard (ceiling)": {
+      "share": 0.2,
+      "price": 1.8,
+      "stucco": 5.6,
+      "paper": 0.4
+    },
+    "12.5 mm moisture-resistant": {
+      "share": 0.12,
+      "price": 2.8,
+      "stucco": 7.45,
+      "paper": 0.44
+    },
+    "12.5 mm fire-resistant": {
+      "share": 0.06,
+      "price": 3.05,
+      "stucco": 7.55,
+      "paper": 0.44
+    }
+  },
+  "vc": {
+    "Stucco (self-produced)": 0.1454439282895011,
+    "Facing paper (imported)": 0.28532799999999997,
+    "Starch": 0.026,
+    "Foaming agent": 0.017099999999999997,
+    "Other additives": 0.014,
+    "Edge adhesive": 0.008,
+    "Dryer thermal energy": 0.14908475517743314,
+    "Electrical power": 0.073038,
+    "Packaging": 0.022,
+    "Maintenance consumables": 0.03,
+    "Reject / waste": 0.017395700504008026,
+    "Outbound freight": 0.06,
+    "Distributor commission": 0.055299999999999995
+  },
+  "total_vc": 0.9026903839709425,
+  "contribution": 1.3093096160290574,
+  "fixed": {
+    "Labour (fully burdened)": 2185264.0,
+    "Maintenance materials & contracts": 400000,
+    "Insurance (property, BI, liability)": 250000,
+    "Security services (contracted)": 220000,
+    "Utilities standing charges & water": 100000,
+    "Admin, IT, professional fees, travel": 350000,
+    "Vehicle fleet operating": 150000,
+    "Environmental, permits, licences": 80000,
+    "Training & development": 80000,
+    "Marketing & specification programme": 280000
+  },
+  "total_fixed": 4095264.0,
+  "labour": {
+    "Expatriate technical directors (2)": {
+      "n": 2,
+      "usd": 200000
+    },
+    "Plant / production management": {
+      "n": 4,
+      "usd": 40000
+    },
+    "Shift supervisors": {
+      "n": 4,
+      "usd": 18000
+    },
+    "Board line operators (4 shifts)": {
+      "n": 32,
+      "usd": 8400
+    },
+    "Calcination & crushing operators": {
+      "n": 16,
+      "usd": 8400
+    },
+    "Quarry supervision (contract-mined)": {
+      "n": 4,
+      "usd": 7800
+    },
+    "Maintenance technicians": {
+      "n": 14,
+      "usd": 10200
+    },
+    "Laboratory & QC": {
+      "n": 6,
+      "usd": 9600
+    },
+    "Warehouse & logistics": {
+      "n": 12,
+      "usd": 7200
+    },
+    "Admin, finance, HR, IT": {
+      "n": 10,
+      "usd": 12000
+    },
+    "Sales & technical services": {
+      "n": 12,
+      "usd": 14400
+    },
+    "Security": {
+      "n": 12,
+      "usd": 6600
+    },
+    "Drivers & general services": {
+      "n": 10,
+      "usd": 6600
+    }
+  },
+  "capex": {
+    "A. Land & site development": {
+      "Land lease premium, registration, NIC allocation": 350000,
+      "Perimeter wall, gatehouse, guard towers": 250000,
+      "Earthworks, grading, compaction": 680000,
+      "Internal roads, hardstanding, drainage": 770000,
+      "Site utilities trenching & culverts": 300000
+    },
+    "B. Buildings & civil works": {
+      "Production hall, 12,000 m2 (heavy slab)": 1680000,
+      "Board warehouse, 6,000 m2": 630000,
+      "Climate-controlled paper store, 1,500 m2": 210000,
+      "Calcination / stucco building, 1,200 m2": 180000,
+      "Rock storage & retaining structures": 100000,
+      "Profiles & compounds hall, 2,800 m2 [Ph2]": 340000,
+      "Workshop, laboratory, MCC rooms, 1,000 m2": 190000,
+      "Administration, canteen, clinic, 1,100 m2": 250000,
+      "Weighbridges, gatehouse, ancillary": 120000
+    },
+    "C. Quarry & rock handling": {
+      "Concession acquisition, drilling, resource report": 350000,
+      "Primary jaw crusher & feed hopper": 340000,
+      "Secondary impactor & screening": 280000,
+      "Conveyors, stockpiles, transfer": 330000,
+      "Quarry access road & site preparation": 400000,
+      "Retained mobile equipment (loader, service)": 250000
+    },
+    "D. Calcination & stucco plant (120 kt/yr)": {
+      "Powder line: mill, kettle calciner, cooler": 1850000,
+      "Bagging & palletising line": 450000,
+      "BMA accelerator ball mill": 80000,
+      "Conveying, silos, storage": 300000,
+      "Area electrical & instrumentation": 300000
+    },
+    "E. Board line (12.0 M m2 nameplate)": {
+      "Chinese main line: mixer, forming, belt, cutter": 1950000,
+      "Multi-deck dryer (6-deck, gas/diesel fired)": 1250000,
+      "Dry end: takeoff, saw, bundler, stacker": 550000,
+      "EU forming station & slurry mixer [upgrade]": 420000,
+      "EU dryer burner & moisture control [upgrade]": 280000,
+      "EU weighing/dosing & foam generation [upgrade]": 220000,
+      "Siemens/ABB PLC, SCADA & drives [upgrade]": 300000,
+      "Edge paper, pasting & glue systems": 180000,
+      "Board handling, conveyors, forklifts": 420000,
+      "Quality laboratory & test equipment": 160000
+    },
+    "F. Steel profiles line [Ph2]": {
+      "Roll forming lines (stud/track, furring, angle)": 750000,
+      "Decoiler & slitting line": 350000,
+      "Packaging & installation": 220000
+    },
+    "G. Jointing compounds plant [Ph2]": {
+      "Dry mix plant 30 kt/yr, silos, dosing, bagging": 650000,
+      "Installation & electrical": 100000
+    },
+    "H. Utilities & power": {
+      "Captive generation 5 MW (N+1), dual-fuel": 900000,
+      "HV/MV substation, transformers, switchgear": 850000,
+      "Grid connection (33 kV)": 450000,
+      "Fuel storage, pumps, bunding": 280000,
+      "Boreholes, treatment, 2,000 m3 storage": 420000,
+      "Fire fighting system & sprinklers": 380000,
+      "Compressed air plant": 160000,
+      "Effluent & waste handling": 100000
+    },
+    "I. Installation, erection & commissioning": {
+      "Mechanical erection, piping, structural steel": 1730000,
+      "Electrical installation & cabling": 740000,
+      "Supplier supervision (expat engineers)": 550000,
+      "Commissioning, trials, ramp-up waste": 450000
+    },
+    "J. Freight, insurance & import": {
+      "Ocean freight & port handling": 750000,
+      "Inland transport to Anbar": 450000,
+      "Marine insurance": 120000,
+      "Customs clearance & agency (duty-exempt, NIC)": 180000
+    },
+    "K. Engineering, project management & permits": {
+      "Feasibility, FEED, detailed engineering": 550000,
+      "Owner's project management team (24 months)": 450000,
+      "Legal, NIC licence, EIA, mining licence": 300000,
+      "Operator training (China/Turkey + on-site)": 220000,
+      "Construction all-risk insurance": 180000
+    },
+    "L. Pre-operating & start-up": {
+      "Recruitment & payroll during construction": 450000,
+      "Critical spares package (12 months)": 550000,
+      "Brand launch & specification programme": 250000,
+      "Certification (COSQC, EN 520 / ASTM C1396)": 150000
+    }
+  },
+  "capex_sub": {
+    "A. Land & site development": 2350000,
+    "B. Buildings & civil works": 3700000,
+    "C. Quarry & rock handling": 1950000,
+    "D. Calcination & stucco plant (120 kt/yr)": 2980000,
+    "E. Board line (12.0 M m2 nameplate)": 5730000,
+    "F. Steel profiles line [Ph2]": 1320000,
+    "G. Jointing compounds plant [Ph2]": 750000,
+    "H. Utilities & power": 3540000,
+    "I. Installation, erection & commissioning": 3470000,
+    "J. Freight, insurance & import": 1500000,
+    "K. Engineering, project management & permits": 1700000,
+    "L. Pre-operating & start-up": 1400000
+  },
+  "phase1": 30778000.000000004,
+  "phase2": 2810060.0,
+  "total_capex": 33588060.0,
+  "rows": [
+    {
+      "year": 0,
+      "util": 0.0,
+      "vol": 0.0,
+      "price": 2.2119999999999997,
+      "revenue": 0.0,
+      "vcost": 0.0,
+      "fixed": 0.0,
+      "ebitda": 0.0,
+      "rev_b": 0.0,
+      "rev_m": 0.0,
+      "rev_p": 0.0,
+      "rev_c": 0.0,
+      "ebitda_board": 0.0
+    },
+    {
+      "year": 1,
+      "util": 0.0,
+      "vol": 0.0,
+      "price": 2.2119999999999997,
+      "revenue": 0.0,
+      "vcost": 0.0,
+      "fixed": 0.0,
+      "ebitda": 0.0,
+      "rev_b": 0.0,
+      "rev_m": 0.0,
+      "rev_p": 0.0,
+      "rev_c": 0.0,
+      "ebitda_board": 0.0
+    },
+    {
+      "year": 2,
+      "util": 0.35,
+      "vol": 4191263.9999999995,
+      "price": 2.2119999999999997,
+      "revenue": 10031075.967999998,
+      "vcost": 4298806.793429375,
+      "fixed": 4095264.0,
+      "ebitda": 1637005.1745706238,
+      "rev_b": 9271075.967999998,
+      "rev_m": 760000.0,
+      "rev_p": 0.0,
+      "rev_c": 0.0,
+      "ebitda_board": 2374152.694570624
+    },
+    {
+      "year": 3,
+      "util": 0.55,
+      "vol": 6586272.000000001,
+      "price": 2.16776,
+      "revenue": 15447856.990720002,
+      "vcost": 6755267.818246162,
+      "fixed": 4128042.96,
+      "ebitda": 4564546.21247384,
+      "rev_b": 14277456.990720002,
+      "rev_m": 1170400.0,
+      "rev_p": 0.0,
+      "rev_c": 0.0,
+      "ebitda_board": 5307593.945273841
+    },
+    {
+      "year": 4,
+      "util": 0.7,
+      "vol": 8382527.999999999,
+      "price": 2.1235199999999996,
+      "revenue": 19259665.858559996,
+      "vcost": 8597613.58685875,
+      "fixed": 4161313.6043999996,
+      "ebitda": 6500738.667301247,
+      "rev_b": 17800465.858559996,
+      "rev_m": 1459200.0,
+      "rev_p": 0.0,
+      "rev_c": 0.0,
+      "ebitda_board": 7249775.116093247
+    },
+    {
+      "year": 5,
+      "util": 0.8,
+      "vol": 9580032.0,
+      "price": 2.07928,
+      "revenue": 33107768.936959997,
+      "vcost": 19488588.93242549,
+      "fixed": 5045083.308465999,
+      "ebitda": 8574096.696068507,
+      "rev_b": 19919568.936959997,
+      "rev_m": 1428800.0,
+      "rev_p": 8629200.0,
+      "rev_c": 3130200.0,
+      "ebitda_board": 7532811.691592388
+    },
+    {
+      "year": 6,
+      "util": 0.83,
+      "vol": 9939283.2,
+      "price": 2.0571599999999997,
+      "revenue": 33494595.827711996,
+      "vcost": 19812881.53609551,
+      "fixed": 5079359.558092989,
+      "ebitda": 8602354.733523495,
+      "rev_b": 20446695.827711996,
+      "rev_m": 1413600.0,
+      "rev_p": 8537400.0,
+      "rev_c": 3096900.0,
+      "ebitda_board": 7692339.4539802335
+    },
+    {
+      "year": 7,
+      "util": 0.83,
+      "vol": 9939283.2,
+      "price": 2.0571599999999997,
+      "revenue": 33494595.827711996,
+      "vcost": 19812881.53609551,
+      "fixed": 5114149.951464384,
+      "ebitda": 8567564.3401521,
+      "rev_b": 20446695.827711996,
+      "rev_m": 1413600.0,
+      "rev_p": 8537400.0,
+      "rev_c": 3096900.0,
+      "ebitda_board": 7663811.3314156905
+    },
+    {
+      "year": 8,
+      "util": 0.83,
+      "vol": 9939283.2,
+      "price": 2.0571599999999997,
+      "revenue": 33494595.827711996,
+      "vcost": 19812881.53609551,
+      "fixed": 5149462.200736349,
+      "ebitda": 8532252.090880135,
+      "rev_b": 20446695.827711996,
+      "rev_m": 1413600.0,
+      "rev_p": 8537400.0,
+      "rev_c": 3096900.0,
+      "ebitda_board": 7634855.287012679
+    },
+    {
+      "year": 9,
+      "util": 0.83,
+      "vol": 9939283.2,
+      "price": 2.0571599999999997,
+      "revenue": 33494595.827711996,
+      "vcost": 19812881.53609551,
+      "fixed": 5185304.133747394,
+      "ebitda": 8496410.15786909,
+      "rev_b": 20446695.827711996,
+      "rev_m": 1413600.0,
+      "rev_p": 8537400.0,
+      "rev_c": 3096900.0,
+      "ebitda_board": 7605464.901943621
+    },
+    {
+      "year": 10,
+      "util": 0.83,
+      "vol": 9939283.2,
+      "price": 2.0571599999999997,
+      "revenue": 33494595.827711996,
+      "vcost": 19812881.53609551,
+      "fixed": 5221683.695753605,
+      "ebitda": 8460030.59586288,
+      "rev_b": 20446695.827711996,
+      "rev_m": 1413600.0,
+      "rev_p": 8537400.0,
+      "rev_c": 3096900.0,
+      "ebitda_board": 7575633.661098529
+    },
+    {
+      "year": 11,
+      "util": 0.83,
+      "vol": 9939283.2,
+      "price": 2.0571599999999997,
+      "revenue": 33494595.827711996,
+      "vcost": 19812881.53609551,
+      "fixed": 5258608.951189909,
+      "ebitda": 8423105.340426575,
+      "rev_b": 20446695.827711996,
+      "rev_m": 1413600.0,
+      "rev_p": 8537400.0,
+      "rev_c": 3096900.0,
+      "ebitda_board": 7545354.95164076
+    },
+    {
+      "year": 12,
+      "util": 0.83,
+      "vol": 9939283.2,
+      "price": 2.0571599999999997,
+      "revenue": 33494595.827711996,
+      "vcost": 19812881.53609551,
+      "fixed": 5296088.085457757,
+      "ebitda": 8385626.206158727,
+      "rev_b": 20446695.827711996,
+      "rev_m": 1413600.0,
+      "rev_p": 8537400.0,
+      "rev_c": 3096900.0,
+      "ebitda_board": 7514622.061541124
+    },
+    {
+      "year": 13,
+      "util": 0.83,
+      "vol": 9939283.2,
+      "price": 2.0571599999999997,
+      "revenue": 33494595.827711996,
+      "vcost": 19812881.53609551,
+      "fixed": 5334129.406739623,
+      "ebitda": 8347584.884876861,
+      "rev_b": 20446695.827711996,
+      "rev_m": 1413600.0,
+      "rev_p": 8537400.0,
+      "rev_c": 3096900.0,
+      "ebitda_board": 7483428.178089994
+    },
+    {
+      "year": 14,
+      "util": 0.83,
+      "vol": 9939283.2,
+      "price": 2.0571599999999997,
+      "revenue": 33494595.827711996,
+      "vcost": 19812881.53609551,
+      "fixed": 5372741.347840717,
+      "ebitda": 8308972.943775767,
+      "rev_b": 20446695.827711996,
+      "rev_m": 1413600.0,
+      "rev_p": 8537400.0,
+      "rev_c": 3096900.0,
+      "ebitda_board": 7451766.386387097
+    },
+    {
+      "year": 15,
+      "util": 0.83,
+      "vol": 9939283.2,
+      "price": 2.0571599999999997,
+      "revenue": 33494595.827711996,
+      "vcost": 19812881.53609551,
+      "fixed": 5411932.468058328,
+      "ebitda": 8269781.823558156,
+      "rev_b": 20446695.827711996,
+      "rev_m": 1413600.0,
+      "rev_p": 8537400.0,
+      "rev_c": 3096900.0,
+      "ebitda_board": 7419629.667808656
+    },
+    {
+      "year": 16,
+      "util": 0.83,
+      "vol": 9939283.2,
+      "price": 2.0571599999999997,
+      "revenue": 33494595.827711996,
+      "vcost": 19812881.53609551,
+      "fixed": 5451711.455079202,
+      "ebitda": 8230002.836537283,
+      "rev_b": 20446695.827711996,
+      "rev_m": 1413600.0,
+      "rev_p": 8537400.0,
+      "rev_c": 3096900.0,
+      "ebitda_board": 7387010.89845154
+    },
+    {
+      "year": 17,
+      "util": 0.83,
+      "vol": 9939283.2,
+      "price": 2.0571599999999997,
+      "revenue": 33494595.827711996,
+      "vcost": 19812881.53609551,
+      "fixed": 5492087.126905391,
+      "ebitda": 8189627.1647110935,
+      "rev_b": 20446695.827711996,
+      "rev_m": 1413600.0,
+      "rev_p": 8537400.0,
+      "rev_c": 3096900.0,
+      "ebitda_board": 7353902.847554064
+    },
+    {
+      "year": 18,
+      "util": 0.83,
+      "vol": 9939283.2,
+      "price": 2.0571599999999997,
+      "revenue": 33494595.827711996,
+      "vcost": 19812881.53609551,
+      "fixed": 5533068.433808971,
+      "ebitda": 8148645.857807513,
+      "rev_b": 20446695.827711996,
+      "rev_m": 1413600.0,
+      "rev_p": 8537400.0,
+      "rev_c": 3096900.0,
+      "ebitda_board": 7320298.175893129
+    },
+    {
+      "year": 19,
+      "util": 0.83,
+      "vol": 9939283.2,
+      "price": 2.0571599999999997,
+      "revenue": 33494595.827711996,
+      "vcost": 19812881.53609551,
+      "fixed": 5574664.460316105,
+      "ebitda": 8107049.83130038,
+      "rev_b": 20446695.827711996,
+      "rev_m": 1413600.0,
+      "rev_p": 8537400.0,
+      "rev_c": 3096900.0,
+      "ebitda_board": 7286189.434157278
+    },
+    {
+      "year": 20,
+      "util": 0.83,
+      "vol": 9939283.2,
+      "price": 2.0571599999999997,
+      "revenue": 33494595.827711996,
+      "vcost": 19812881.53609551,
+      "fixed": 5616884.4272208465,
+      "ebitda": 8064829.864395638,
+      "rev_b": 20446695.827711996,
+      "rev_m": 1413600.0,
+      "rev_p": 8537400.0,
+      "rev_c": 3096900.0,
+      "ebitda_board": 7251569.061295391
+    }
+  ],
+  "fcf": [
+    {
+      "year": 0,
+      "ebitda": 0.0,
+      "dep": 0.0,
+      "ebit": 0.0,
+      "tax": 0.0,
+      "capex": 13850100.000000002,
+      "maint": 0.0,
+      "dnwc": 0.0,
+      "fcf": -13850100.000000002
+    },
+    {
+      "year": 1,
+      "ebitda": 0.0,
+      "dep": 0.0,
+      "ebit": 0.0,
+      "tax": 0.0,
+      "capex": 16927900.000000004,
+      "maint": 0.0,
+      "dnwc": 0.0,
+      "fcf": -16927900.000000004
+    },
+    {
+      "year": 2,
+      "ebitda": 1637005.1745706238,
+      "dep": 2360591.9162005046,
+      "ebit": -723586.7416298809,
+      "tax": 0.0,
+      "capex": 0.0,
+      "maint": 671761.2000000002,
+      "dnwc": 1864858.5809394002,
+      "fcf": -899614.6063687766
+    },
+    {
+      "year": 3,
+      "ebitda": 4564546.21247384,
+      "dep": 2360591.9162005046,
+      "ebit": 2203954.296273336,
+      "tax": 0.0,
+      "capex": 0.0,
+      "maint": 671761.2000000002,
+      "dnwc": 1018128.18354549,
+      "fcf": 2874656.8289283505
+    },
+    {
+      "year": 4,
+      "ebitda": 6500738.667301247,
+      "dep": 2360591.9162005046,
+      "ebit": 4140146.7511007423,
+      "tax": 0.0,
+      "capex": 2810060.0,
+      "maint": 671761.2000000002,
+      "dnwc": 725807.837779664,
+      "fcf": 2293109.6295215827
+    },
+    {
+      "year": 5,
+      "ebitda": 8574096.696068507,
+      "dep": 2576116.1516946363,
+      "ebit": 5997980.54437387,
+      "tax": 0.0,
+      "capex": 0.0,
+      "maint": 671761.2000000002,
+      "dnwc": 2981849.122408225,
+      "fcf": 4920486.373660281
+    },
+    {
+      "year": 6,
+      "ebitda": 8602354.733523495,
+      "dep": 2576116.1516946363,
+      "ebit": 6026238.581828859,
+      "tax": 0.0,
+      "capex": 0.0,
+      "maint": 671761.2000000002,
+      "dnwc": 84943.17014098726,
+      "fcf": 7845650.363382508
+    },
+    {
+      "year": 7,
+      "ebitda": 8567564.3401521,
+      "dep": 2576116.1516946363,
+      "ebit": 5991448.188457463,
+      "tax": 0.0,
+      "capex": 0.0,
+      "maint": 671761.2000000002,
+      "dnwc": 0.0,
+      "fcf": 7895803.1401521
+    },
+    {
+      "year": 8,
+      "ebitda": 8532252.090880135,
+      "dep": 2576116.1516946363,
+      "ebit": 5956135.939185498,
+      "tax": 0.0,
+      "capex": 0.0,
+      "maint": 671761.2000000002,
+      "dnwc": 0.0,
+      "fcf": 7860490.890880135
+    },
+    {
+      "year": 9,
+      "ebitda": 8496410.15786909,
+      "dep": 2576116.1516946363,
+      "ebit": 5920294.006174453,
+      "tax": 0.0,
+      "capex": 0.0,
+      "maint": 671761.2000000002,
+      "dnwc": 0.0,
+      "fcf": 7824648.957869089
+    },
+    {
+      "year": 10,
+      "ebitda": 8460030.59586288,
+      "dep": 2576116.1516946363,
+      "ebit": 5883914.444168244,
+      "tax": 882587.1666252365,
+      "capex": 0.0,
+      "maint": 671761.2000000002,
+      "dnwc": 0.0,
+      "fcf": 6905682.229237644
+    },
+    {
+      "year": 11,
+      "ebitda": 8423105.340426575,
+      "dep": 2576116.1516946363,
+      "ebit": 5846989.188731939,
+      "tax": 877048.3783097907,
+      "capex": 0.0,
+      "maint": 671761.2000000002,
+      "dnwc": 0.0,
+      "fcf": 6874295.762116784
+    },
+    {
+      "year": 12,
+      "ebitda": 8385626.206158727,
+      "dep": 2576116.1516946363,
+      "ebit": 5809510.054464091,
+      "tax": 871426.5081696135,
+      "capex": 0.0,
+      "maint": 671761.2000000002,
+      "dnwc": 0.0,
+      "fcf": 6842438.497989113
+    },
+    {
+      "year": 13,
+      "ebitda": 8347584.884876861,
+      "dep": 2576116.1516946363,
+      "ebit": 5771468.733182225,
+      "tax": 865720.3099773338,
+      "capex": 0.0,
+      "maint": 671761.2000000002,
+      "dnwc": 0.0,
+      "fcf": 6810103.374899527
+    },
+    {
+      "year": 14,
+      "ebitda": 8308972.943775767,
+      "dep": 2576116.1516946363,
+      "ebit": 5732856.792081131,
+      "tax": 859928.5188121696,
+      "capex": 0.0,
+      "maint": 671761.2000000002,
+      "dnwc": 0.0,
+      "fcf": 6777283.224963598
+    },
+    {
+      "year": 15,
+      "ebitda": 8269781.823558156,
+      "dep": 2576116.1516946363,
+      "ebit": 5693665.6718635205,
+      "tax": 854049.850779528,
+      "capex": 0.0,
+      "maint": 671761.2000000002,
+      "dnwc": 0.0,
+      "fcf": 6743970.772778628
+    },
+    {
+      "year": 16,
+      "ebitda": 8230002.836537283,
+      "dep": 2576116.1516946363,
+      "ebit": 5653886.684842646,
+      "tax": 848083.0027263969,
+      "capex": 0.0,
+      "maint": 671761.2000000002,
+      "dnwc": 0.0,
+      "fcf": 6710158.633810886
+    },
+    {
+      "year": 17,
+      "ebitda": 8189627.1647110935,
+      "dep": 2576116.1516946363,
+      "ebit": 5613511.013016457,
+      "tax": 842026.6519524684,
+      "capex": 0.0,
+      "maint": 671761.2000000002,
+      "dnwc": 0.0,
+      "fcf": 6675839.312758625
+    },
+    {
+      "year": 18,
+      "ebitda": 8148645.857807513,
+      "dep": 2576116.1516946363,
+      "ebit": 5572529.706112877,
+      "tax": 835879.4559169315,
+      "capex": 0.0,
+      "maint": 671761.2000000002,
+      "dnwc": 0.0,
+      "fcf": 6641005.201890581
+    },
+    {
+      "year": 19,
+      "ebitda": 8107049.83130038,
+      "dep": 2576116.1516946363,
+      "ebit": 5530933.679605743,
+      "tax": 829640.0519408614,
+      "capex": 0.0,
+      "maint": 671761.2000000002,
+      "dnwc": 0.0,
+      "fcf": 6605648.579359518
+    },
+    {
+      "year": 20,
+      "ebitda": 8064829.864395638,
+      "dep": 2576116.1516946363,
+      "ebit": 5488713.712701002,
+      "tax": 823307.0569051503,
+      "capex": 0.0,
+      "maint": 671761.2000000002,
+      "dnwc": 0.0,
+      "fcf": 6569761.607490487
+    }
+  ],
+  "debt": [
+    {
+      "year": 0,
+      "interest": 0.0,
+      "principal": 0.0,
+      "balance": 16505000.0
+    },
+    {
+      "year": 1,
+      "interest": 0.0,
+      "principal": 0.0,
+      "balance": 16505000.0
+    },
+    {
+      "year": 2,
+      "interest": 1576575.0,
+      "principal": 1107142.857142857,
+      "balance": 15397857.142857142
+    },
+    {
+      "year": 3,
+      "interest": 1432646.4285714286,
+      "principal": 1107142.857142857,
+      "balance": 14290714.285714285
+    },
+    {
+      "year": 4,
+      "interest": 1288717.8571428573,
+      "principal": 1107142.857142857,
+      "balance": 13183571.42857143
+    },
+    {
+      "year": 5,
+      "interest": 1144789.2857142857,
+      "principal": 2357857.1428571427,
+      "balance": 10825714.285714285
+    },
+    {
+      "year": 6,
+      "interest": 919564.2857142857,
+      "principal": 2357857.1428571427,
+      "balance": 8467857.142857142
+    },
+    {
+      "year": 7,
+      "interest": 694339.2857142857,
+      "principal": 2357857.1428571427,
+      "balance": 6110000.0
+    },
+    {
+      "year": 8,
+      "interest": 469114.28571428574,
+      "principal": 2357857.1428571423,
+      "balance": 3752142.857142858
+    },
+    {
+      "year": 9,
+      "interest": 243889.2857142858,
+      "principal": 1250714.2857142857,
+      "balance": 2501428.5714285728
+    },
+    {
+      "year": 10,
+      "interest": 162592.85714285725,
+      "principal": 1250714.2857142857,
+      "balance": 1250714.285714287
+    },
+    {
+      "year": 11,
+      "interest": 81296.42857142867,
+      "principal": 1250714.2857142857,
+      "balance": 1.3969838619232178e-09
+    },
+    {
+      "year": 12,
+      "interest": 9.080395102500916e-11,
+      "principal": 0.0,
+      "balance": 1.3969838619232178e-09
+    },
+    {
+      "year": 13,
+      "interest": 9.080395102500916e-11,
+      "principal": 0.0,
+      "balance": 1.3969838619232178e-09
+    },
+    {
+      "year": 14,
+      "interest": 9.080395102500916e-11,
+      "principal": 0.0,
+      "balance": 1.3969838619232178e-09
+    },
+    {
+      "year": 15,
+      "interest": 9.080395102500916e-11,
+      "principal": 0.0,
+      "balance": 1.3969838619232178e-09
+    },
+    {
+      "year": 16,
+      "interest": 9.080395102500916e-11,
+      "principal": 0.0,
+      "balance": 1.3969838619232178e-09
+    },
+    {
+      "year": 17,
+      "interest": 9.080395102500916e-11,
+      "principal": 0.0,
+      "balance": 1.3969838619232178e-09
+    },
+    {
+      "year": 18,
+      "interest": 9.080395102500916e-11,
+      "principal": 0.0,
+      "balance": 1.3969838619232178e-09
+    },
+    {
+      "year": 19,
+      "interest": 9.080395102500916e-11,
+      "principal": 0.0,
+      "balance": 1.3969838619232178e-09
+    },
+    {
+      "year": 20,
+      "interest": 9.080395102500916e-11,
+      "principal": 0.0,
+      "balance": 1.3969838619232178e-09
+    }
+  ],
+  "nwc": [
+    0.0,
+    0.0,
+    1864858.5809394002,
+    2882986.7644848903,
+    3608794.6022645542,
+    6590643.724672779,
+    6675586.894813767,
+    6675586.894813767,
+    6675586.894813767,
+    6675586.894813767,
+    6675586.894813767,
+    6675586.894813767,
+    6675586.894813767,
+    6675586.894813767,
+    6675586.894813767,
+    6675586.894813767,
+    6675586.894813767,
+    6675586.894813767,
+    6675586.894813767,
+    6675586.894813767,
+    6675586.894813767
+  ],
+  "returns": {
+    "npv": 5489574.271334309,
+    "irr": 0.15481722918928031,
+    "eq_irr": 0.15116656394739725,
+    "tv": 58270929.04035041,
+    "payback": 6.743962222195155,
+    "wacc": 0.135
+  },
+  "capital": {
+    "china": 10300000,
+    "eca": 8755000.0,
+    "local": 7750000.0,
+    "debt": 16505000.0,
+    "equity": 19576612.72726456,
+    "total": 36081612.72726456,
+    "gearing": 0.4574352073661117
+  },
+  "sens": [
+    [
+      "Base case",
+      0.15481722918928031,
+      5489574.271334309
+    ],
+    [
+      "Realised price \u221210%",
+      0.08816289718435366,
+      -11255042.582699561
+    ],
+    [
+      "Realised price \u221220% (ATS at scale)",
+      -0.038948931801419284,
+      -28384051.1887929
+    ],
+    [
+      "Variable cost +15%",
+      0.09770006278278809,
+      -9106463.002411343
+    ],
+    [
+      "Facing paper +40% (VC +13%)",
+      0.10627039523622439,
+      -7160324.69924525
+    ],
+    [
+      "CAPEX overrun +25%",
+      0.12574143727846654,
+      -3000281.6490218267
+    ],
+    [
+      "Utilisation \u221220% (ramp failure)",
+      0.10755112513379717,
+      -7051719.5555122625
+    ],
+    [
+      "Fixed costs +20%",
+      0.1325972786005759,
+      -648476.8145207828
+    ],
+    [
+      "BEAR: px \u221215%, capex +20%, util \u221215%",
+      -0.03174636639381062,
+      -33634185.6152595
+    ],
+    [
+      "BULL: px +10%, pipeline gas, util +8%",
+      0.24566561334067794,
+      35195276.25004898
+    ]
+  ],
+  "breakeven": {
+    "volume": 3127804.1113150385,
+    "price": 1.3130703743509329
+  },
+  "variants": {
+    "full": {
+      "scale": 1.0,
+      "nameplate": 11975040.0,
+      "direct": 27934400.0,
+      "fixed": 30727840.000000004,
+      "wc": 3608794.6022645542,
+      "total": 34336634.60226456,
+      "intensity": 2.565990593768372
+    },
+    "integrated_20m": {
+      "scale": 0.3840291721583673,
+      "nameplate": 4598764.697763335,
+      "direct": 16921925.08763887,
+      "fixed": 18614117.596402757,
+      "wc": 1385882.403597241,
+      "total": 19999999.999999996,
+      "intensity": 4.047634271319852
+    },
+    "boardonly_20m": {
+      "scale": 0.502185663401552,
+      "nameplate": 6013693.406660122,
+      "direct": 16122403.509752084,
+      "fixed": 17734643.86072729,
+      "wc": 2265356.1392727066,
+      "total": 20000000.0,
+      "intensity": 2.949043567982083
+    },
+    "budget": 20000000.0
+  },
+  "idc": 1694818.125,
+  "dscr": {
+    "minimum": 0.6099766300744498,
+    "average": 3.401261989169922
+  }
+}
