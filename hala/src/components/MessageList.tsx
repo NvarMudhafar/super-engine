@@ -64,6 +64,15 @@ export function MessageList({ snap, onReport }: { snap: Snapshot; onReport: () =
   useEffect(() => {
     pinned.current = true;
   }, [snap.matchId]);
+  useEffect(() => {
+    const el = scroller.current;
+    if (!el || typeof ResizeObserver === 'undefined') return;
+    const ro = new ResizeObserver(() => {
+      if (pinned.current) el.scrollTop = el.scrollHeight;
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   if (snap.phase === 'searching' || snap.phase === 'camera') {
     return (

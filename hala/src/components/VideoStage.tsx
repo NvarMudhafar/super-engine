@@ -31,8 +31,9 @@ export function VideoStage({
   const camOff = hasVideo && !snap.partnerMedia.cam;
   const blurred = hasVideo && !revealed && !camOff;
 
+  const searching = snap.phase === 'searching' || snap.phase === 'camera';
   let overlay: string | null = null;
-  if (snap.phase === 'searching' || snap.phase === 'camera') overlay = t.vLooking;
+  if (searching) overlay = null;
   else if (snap.phase === 'ended') overlay = t.vEnded;
   else if (chatting && snap.rtc === 'failed') overlay = t.vFailed;
   else if (chatting && !snap.remoteStream) overlay = t.vConnecting;
@@ -42,12 +43,12 @@ export function VideoStage({
     <section className="stage" aria-label={t.videoSection}>
       <div className={`remote${blurred ? ' is-blurred' : ''}${hasVideo && !camOff ? ' has-video' : ''}`}>
         <video ref={remote} autoPlay playsInline aria-label={t.theirVideo} />
-        {overlay && (
+        {(overlay || searching) && (
           <div className="stage-overlay">
-            {(snap.phase === 'searching' || (chatting && !snap.remoteStream && snap.rtc !== 'failed')) && (
+            {(searching || (chatting && !snap.remoteStream && snap.rtc !== 'failed')) && (
               <span className="spinner" aria-hidden="true" />
             )}
-            <span>{overlay}</span>
+            {overlay ? <span>{overlay}</span> : <span className="sr-only">{t.vLooking}</span>}
           </div>
         )}
         {blurred && (

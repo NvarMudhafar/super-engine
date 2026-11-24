@@ -1,5 +1,5 @@
 import { createReadStream } from 'node:fs';
-import { stat } from 'node:fs/promises';
+import { readFile, stat } from 'node:fs/promises';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { extname, join, normalize, resolve, sep } from 'node:path';
 
@@ -9,6 +9,7 @@ const TYPES: Record<string, string> = {
   '.css': 'text/css; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
+  '.jpg': 'image/jpeg',
   '.ico': 'image/x-icon',
   '.json': 'application/json',
   '.webmanifest': 'application/manifest+json',
@@ -40,8 +41,11 @@ export const SECURITY_HEADERS: Record<string, string> = {
   'Cross-Origin-Opener-Policy': 'same-origin',
 };
 
-/** Serve the built client from `root`, falling back to index.html. */
-export function createStaticHandler(root: string) {
+/**
+ * Serve the built client from `root`, falling back to index.html. HTML goes
+ * through `rewriteHtml` first (used to put the real origin in link previews).
+ */
+export function createStaticHandler(root: string, rewriteHtml?: (html: string, req: IncomingMessage) => string) {
   const base = resolve(root);
 
   return async (req: IncomingMessage, res: ServerResponse) => {
@@ -79,6 +83,17 @@ export function createStaticHandler(root: string) {
     }
 
     const hashed = file.includes(`${sep}assets${sep}`);
+    if (rewriteHtml && extname(file) === '.html') {
+      const body = Buffer.from(rewriteHtml(await readFile(file, 'utf8'), req));
+      res.writeHead(200, {
+        ...SECURITY_HEADERS,
+        'Content-Type': TYPES['.html'],
+        'Content-Length': body.length,
+        'Cache-Control': 'no-cache',
+      });
+      res.end(req.method === 'HEAD' ? undefined : body);
+      return;
+    }
     res.writeHead(200, {
       ...SECURITY_HEADERS,
       'Content-Type': TYPES[extname(file)] ?? 'application/octet-stream',

@@ -147,6 +147,17 @@ html:lang(ar) body {
 
 h1,
 h2,
+h3,
+.lede,
+.searching p,
+.line.system span,
+.stage-overlay,
+.reveal span {
+  text-wrap: balance;
+}
+
+h1,
+h2,
 h3 {
   font-family: var(--font-display);
   line-height: 1.2;
@@ -240,6 +251,12 @@ kbd {
 
 .btn:active:not(:disabled) {
   transform: translateY(1px);
+}
+
+.btn svg,
+.icon-btn svg,
+.round-btn svg {
+  flex-shrink: 0;
 }
 
 .btn:disabled {
@@ -391,6 +408,9 @@ kbd {
   justify-content: center;
   gap: 0.5rem;
   min-width: 0;
+  overflow: hidden;
+  /* room for the status dot's glow, which overflow would otherwise shave off */
+  padding-inline: 4px;
 }
 
 .topbar-end {
@@ -1261,6 +1281,12 @@ html:lang(ar) .bubble {
   box-shadow: none;
 }
 
+.input-wrap textarea:placeholder-shown {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .icebreaker {
   margin: 3px;
   color: var(--text-3);
@@ -1305,8 +1331,13 @@ html:lang(ar) .bubble {
 
 .mode-video .conversation {
   flex: 1;
+  min-width: 340px;
   max-width: 440px;
   border-inline-start: 1px solid var(--border);
+}
+
+.mode-video .next-btn kbd {
+  display: none;
 }
 
 .remote {
@@ -1337,6 +1368,7 @@ html:lang(ar) .bubble {
 .stage-overlay {
   position: absolute;
   inset: 0;
+  pointer-events: none;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1760,6 +1792,33 @@ html:lang(ar) .prose ol {
     display: none;
   }
 
+  /* …except when the connection is down: then it's the only sign we're reconnecting. */
+  .chat-page .online-pill.offline {
+    display: inline-flex;
+  }
+
+  .topbar {
+    gap: 0.5rem;
+  }
+
+  .topbar-end {
+    gap: 0.15rem;
+  }
+
+  .btn.report-btn {
+    width: 36px;
+    padding: 0;
+  }
+
+  .lang-btn {
+    padding: 0 0.55rem;
+  }
+
+  .topbar .icon-btn {
+    width: 36px;
+    height: 36px;
+  }
+
   .chat-page .topbar-middle {
     justify-content: flex-start;
   }
@@ -1775,6 +1834,30 @@ html:lang(ar) .prose ol {
 
   .line {
     max-width: 85%;
+  }
+
+  .home-foot {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    text-align: center;
+  }
+
+  .home-foot [aria-hidden='true'] {
+    display: none;
+  }
+
+  /* After a chat: "new chat" full width, the rest share a row (or fill it alone). */
+  .ended-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-inline: auto;
+    max-width: 22rem;
+  }
+
+  .ended-actions .btn.primary,
+  .ended-actions > :last-child:nth-child(2) {
+    grid-column: 1 / -1;
   }
 }
 

@@ -1,0 +1,17 @@
+{
+  "name": "هلا · hala",
+  "short_name": "هلا",
+  "description": "سوالف وحدة لوحدة ويا شخص يحب نفس الأشياء اللي تحبها. كتابة لو فيديو، بلا حساب وبلا تنزيل.",
+  "lang": "ar-IQ",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f6ecdd",
+  "theme_color": "#f6ecdd",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

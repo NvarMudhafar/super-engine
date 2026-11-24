@@ -35,7 +35,22 @@ const hub = new Hub({
   onReport: logReport,
 });
 
-const serveStatic = createStaticHandler(join(root, 'dist'));
+/** The site's own address, for the absolute URLs link previews need. */
+function originOf(req: IncomingMessage): string {
+  if (config.publicUrl) return config.publicUrl;
+  const header = (name: string) => {
+    const v = req.headers[name];
+    return (Array.isArray(v) ? v[0] : v)?.split(',')[0]?.trim();
+  };
+  const proto = (config.trustProxy && header('x-forwarded-proto')) || ('encrypted' in req.socket ? 'https' : 'http');
+  const host = (config.trustProxy && header('x-forwarded-host')) || header('host') || `localhost:${config.port}`;
+  // Only a plain host[:port] may land in the page.
+  return /^[a-z0-9.-]+(:\d+)?$/i.test(host) ? `${proto}://${host}` : `http://localhost:${config.port}`;
+}
+
+const serveStatic = createStaticHandler(join(root, 'dist'), (html, req) =>
+  html.replaceAll('https://__HALA_ORIGIN__', originOf(req)),
+);
 
 const server = createServer((req, res) => {
   if (req.url === '/healthz') {

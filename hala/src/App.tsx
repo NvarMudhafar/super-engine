@@ -4,7 +4,7 @@ import { ChatScreen } from './components/ChatScreen.tsx';
 import { Home } from './components/Home.tsx';
 import { Logo } from './components/Icons.tsx';
 import { attention } from './lib/attention.ts';
-import { DICTS, fmtNum, I18nContext, useI18n } from './lib/i18n.ts';
+import { DICTS, I18nContext, useI18n } from './lib/i18n.ts';
 import { applyLang, applyTheme, loadPrefs, savePrefs, type Prefs } from './lib/prefs.ts';
 import { session, useSession, type Snapshot } from './lib/session.ts';
 
@@ -31,14 +31,10 @@ function Banned({ ban }: { ban: NonNullable<Snapshot['ban']> }) {
     return () => window.clearInterval(id);
   }, []);
   const left = Math.max(0, ban.until - now);
-  const hours = Math.floor(left / 3600_000);
-  const minutes = Math.ceil((left % 3600_000) / 60_000);
-  const when =
-    left <= 0
-      ? t.whenNow
-      : hours > 0
-        ? t.whenHours(fmtNum(hours, t), fmtNum(minutes, t))
-        : t.whenMinutes(fmtNum(minutes, t));
+  const totalMinutes = Math.ceil(left / 60_000);
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  const when = left <= 0 ? t.whenNow : hours > 0 ? t.whenHours(hours, minutes) : t.whenMinutes(minutes);
 
   return (
     <div className="banned-page">

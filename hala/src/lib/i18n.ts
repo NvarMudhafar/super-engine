@@ -8,6 +8,13 @@ export type Lang = 'ar' | 'en';
 
 type Pair = readonly [title: string, body: string];
 
+const arNum = (n: number) => n.toLocaleString('ar-IQ');
+/** Arabic counted nouns: ساعة، ساعتين، ٣ ساعات، ١١ ساعة. */
+const arCount = (n: number, one: string, two: string, few: string, many: string) =>
+  n === 1 ? one : n === 2 ? two : n <= 10 ? `${arNum(n)} ${few}` : `${arNum(n)} ${many}`;
+const arHours = (n: number) => arCount(n, 'ساعة', 'ساعتين', 'ساعات', 'ساعة');
+const arMinutes = (n: number) => arCount(n, 'دقيقة', 'دقيقتين', 'دقايق', 'دقيقة');
+
 /** Interest chips offered on the start screen, worded per language but matched as one. */
 export const SUGGESTIONS: ReadonlyArray<{ ar: string; en: string }> = [
   { ar: 'كرة القدم', en: 'football' },
@@ -33,7 +40,7 @@ const en = {
   newMessage: 'New message',
   online: (n: string) => `${n} online`,
   connecting: 'Connecting…',
-  offline: 'Offline — retrying',
+  offline: 'Offline',
   onlineTitle: 'People connected right now',
   toLight: 'Switch to light theme',
   toDark: 'Switch to dark theme',
@@ -179,8 +186,8 @@ const en = {
   newChat: 'New chat',
   saveChat: 'Save chat',
   composerLive: 'Say something…',
-  composerEnded: 'This chat has ended',
-  composerWaiting: 'Waiting for someone…',
+  composerEnded: 'Chat ended',
+  composerWaiting: 'Waiting…',
   next: 'Next',
   sure: 'Sure?',
   newShort: 'New',
@@ -239,8 +246,8 @@ const en = {
   } as Record<BanReason, string>,
   canChatAgain: (when: string) => `You can chat again ${when}.`,
   whenNow: 'now',
-  whenHours: (h: string, m: string) => `in about ${h}h ${m}m`,
-  whenMinutes: (m: string) => `in about ${m} minutes`,
+  whenHours: (h: number, m: number) => (m ? `in about ${h}h ${m}m` : `in about ${h} hour${h > 1 ? 's' : ''}`),
+  whenMinutes: (m: number) => `in about ${m} minute${m > 1 ? 's' : ''}`,
   bannedExplain:
     'This happens automatically when several different people report the same person, or when something behaves like a spam bot.',
   tryAgain: 'Try again',
@@ -297,7 +304,7 @@ const ar: Dict = {
   newMessage: 'رسالة جديدة',
   online: (n) => `${n} متصل`,
   connecting: 'دنتصل…',
-  offline: 'مقطوع — دنحاول',
+  offline: 'مقطوع',
   onlineTitle: 'الناس المتصلين هسه',
   toLight: 'الوضع الفاتح',
   toDark: 'الوضع الغامق',
@@ -321,8 +328,8 @@ const ar: Dict = {
   cityAny: 'أي مكان بالعراق',
   cityHint: 'نوصلك أول بناس من نفس مدينتك، وما تبين إلا لشخص مختار نفس المدينة.',
   fallback: (s) => `إذا ماكو أحد يطابق هذني، وصلني بأي أحد بعد ${s} ثواني`,
-  consentBefore: 'عمري ١٨ سنة أو أكثر وراح ألتزم بـ',
-  consentLink: 'آداب الگعدة',
+  consentBefore: 'عمري ١٨ سنة أو أكثر وراح ألتزم ',
+  consentLink: 'بآداب الگعدة',
   consentAfter: '.',
   consentNudge: 'أكّد أول إن عمرك ١٨ أو أكثر وإنك موافق على الآداب.',
   textChat: 'دردشة كتابة',
@@ -439,7 +446,7 @@ const ar: Dict = {
   saveChat: 'احفظ السالفة',
   composerLive: 'اكتب شي…',
   composerEnded: 'السالفة خلصت',
-  composerWaiting: 'ننتظر أحد…',
+  composerWaiting: 'ننتظر…',
   next: 'التالي',
   sure: 'متأكد؟',
   newShort: 'جديد',
@@ -496,8 +503,8 @@ const ar: Dict = {
   },
   canChatAgain: (when) => `تكدر ترجع تسولف ${when}.`,
   whenNow: 'هسه',
-  whenHours: (h, m) => `بعد حوالي ${h} ساعة و${m} دقيقة`,
-  whenMinutes: (m) => `بعد حوالي ${m} دقيقة`,
+  whenHours: (h, m) => (m ? `بعد حوالي ${arHours(h)} و${arMinutes(m)}` : `بعد حوالي ${arHours(h)}`),
+  whenMinutes: (m) => `بعد حوالي ${arMinutes(m)}`,
   bannedExplain: 'هذا يصير تلقائياً لما أكثر من شخص يبلّغون على نفس الشخص، أو لما شي يتصرف مثل بوت سبام.',
   tryAgain: 'جرّب مرة ثانية',
 

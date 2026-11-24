@@ -23,6 +23,8 @@ export interface Config {
   banHours: number;
   maxConnectionsPerIp: number;
   widenAfterMs: number;
+  /** Public address, e.g. https://hala.iq — used in link previews. Else taken from each request. */
+  publicUrl: string;
 }
 
 const list = (v: string | undefined, fallback: string[] = []) =>
@@ -51,6 +53,7 @@ export function loadConfig(env: NodeJS.ProcessEnv): Config {
     banHours: int(env.BAN_HOURS, 24, 1),
     maxConnectionsPerIp: int(env.MAX_CONNECTIONS_PER_IP, 8, 1),
     widenAfterMs: int(env.WIDEN_AFTER_MS, 8000),
+    publicUrl: (env.PUBLIC_URL ?? '').replace(/\/+$/, ''),
   };
 }
 

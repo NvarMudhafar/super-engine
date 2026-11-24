@@ -111,6 +111,12 @@ or `localhost`. Put the server behind a TLS-terminating proxy (Caddy, nginx, a
 load balancer), make sure it forwards WebSocket upgrades on `/ws`, and set
 `TRUST_PROXY=1` so the real client IP is used.
 
+**Sharing the link.** Links shared on WhatsApp, Telegram, Instagram or X show
+a preview card (`public/og.jpg`). Those apps need the image's full address, so
+set `PUBLIC_URL` to your domain. Without it, the server uses the address each
+request came in on. On a phone, the site can be added to the home screen as
+«هلا», with its own icon and no browser bar.
+
 `GET /healthz` returns live counts:
 `{ ok, online, waiting, chats, videoChats, bans }`.
 
@@ -119,6 +125,7 @@ load balancer), make sure it forwards WebSocket upgrades on `/ws`, and set
 | Variable | Default | |
 | --- | --- | --- |
 | `PORT` / `HOST` | `3000` / `0.0.0.0` | |
+| `PUBLIC_URL` | from each request | The site's public address, e.g. `https://hala.iq`. It goes into link previews. Set it in production. |
 | `TRUST_PROXY` | off | Use `X-Forwarded-For`. Turn this on only behind a proxy you control. |
 | `ALLOWED_ORIGINS` | same host | Comma-separated origins allowed to open the WebSocket. |
 | `STUN_URLS` | Google's public STUN | Comma-separated. Set to empty to disable. |
