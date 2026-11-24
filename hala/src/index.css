@@ -790,14 +790,15 @@ html:lang(ar) .check input {
   font-size: 0.95rem;
 }
 
-.promises span {
+/* Only the description — not the icon tile, which is a <span> too. */
+.promises li > div > span {
   display: block;
   font-size: 0.875rem;
   color: var(--text-2);
   line-height: 1.5;
 }
 
-html:lang(ar) .promises span {
+html:lang(ar) .promises li > div > span {
   line-height: 1.7;
 }
 

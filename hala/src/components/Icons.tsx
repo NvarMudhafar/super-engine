@@ -135,6 +135,14 @@ export const SparkIcon = (p: IconProps) => (
   </Icon>
 );
 
+/** Two overlapping circles: what two people have in common. */
+export const MatchIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <circle cx="9" cy="12" r="6" />
+    <circle cx="15" cy="12" r="6" />
+  </Icon>
+);
+
 export const BlockIcon = (p: IconProps) => (
   <Icon {...p}>
     <circle cx="12" cy="12" r="9" />

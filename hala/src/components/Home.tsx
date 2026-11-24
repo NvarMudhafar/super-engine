@@ -6,10 +6,10 @@ import type { Prefs } from '../lib/prefs.ts';
 import type { Snapshot } from '../lib/session.ts';
 import { RulesDialog } from './Dialogs.tsx';
 import { InterestInput } from './InterestInput.tsx';
-import { ChatIcon, EyeOffIcon, FlagIcon, PinIcon, ShieldIcon, SparkIcon, TeaScene, VideoIcon } from './Icons.tsx';
+import { ChatIcon, EyeOffIcon, FlagIcon, MatchIcon, PinIcon, ShieldIcon, TeaScene, VideoIcon } from './Icons.tsx';
 import { TopBar } from './TopBar.tsx';
 
-const PROMISE_ICONS = [SparkIcon, EyeOffIcon, FlagIcon, ShieldIcon];
+const PROMISE_ICONS = [MatchIcon, EyeOffIcon, FlagIcon, ShieldIcon];
 
 export function Home({
   snap,
