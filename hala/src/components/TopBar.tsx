@@ -15,7 +15,7 @@ export function OnlinePill({ snap }: { snap: Snapshot }) {
   }
   return (
     <span className="online-pill" role="status" title={t.onlineTitle}>
-      <span className="dot" /> {t.online(snap.online === null ? '—' : fmtNum(snap.online, t))}
+      <span className="dot" /> {t.online(snap.online === null ? '…' : fmtNum(snap.online, t))}
     </span>
   );
 }

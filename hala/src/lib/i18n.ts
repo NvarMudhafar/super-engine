@@ -35,7 +35,7 @@ const en = {
   dir: 'ltr' as 'ltr' | 'rtl',
   locale: 'en',
   appName: 'hala',
-  docTitle: 'hala — talk to someone new',
+  docTitle: 'hala · talk to someone new',
   newStranger: 'New stranger',
   newMessage: 'New message',
   online: (n: string) => `${n} online`,
@@ -53,7 +53,7 @@ const en = {
   heroBefore: 'Talk to someone ',
   heroAccent: 'new',
   heroAfter: '.',
-  lede: 'One-on-one chats with someone who likes what you like. Text or video — no account, nothing to install.',
+  lede: 'One-on-one chats with someone who likes what you like. Text or video. No account, nothing to install.',
   interestsLabel: 'What are you into?',
   optional: 'Optional',
   interestEmpty: 'Type an interest and press Enter',
@@ -116,7 +116,7 @@ const en = {
   privacy: [
     [
       'No accounts.',
-      "You're just “the other person”. Nothing identifies you unless you share it — so don't share your full name, address, school or socials with someone you just met.",
+      "You're just “the other person”. Nothing identifies you unless you share it, so don't share your full name, address, school or socials with someone you just met.",
     ],
     ["Messages aren't stored.", 'They pass through the server to reach the other person and are kept in memory only for the length of the chat.'],
     ['Reports include evidence.', "If you report a chat, its last messages are saved with the report so a person can review it."],
@@ -178,7 +178,7 @@ const en = {
   ended: {
     'you-left': 'You left the chat.',
     'partner-left': 'The other person left the chat.',
-    'you-reported': "Reported. Thanks for flagging it — you won't be matched with them again.",
+    'you-reported': "Reported. Thanks for flagging it. You won't be matched with them again.",
     'you-blocked': "Blocked. You won't be matched with them again.",
     'connection-lost': 'Your connection dropped, so the chat ended.',
   } as Record<EndKind, string>,
@@ -197,9 +197,9 @@ const en = {
   icebreaker: 'Suggest a conversation starter',
   messageLabel: 'Message',
   fail: {
-    'slow-down': 'Not sent — you are sending messages too quickly.',
-    'repeat-opener': 'Not sent — that looks like a pasted opener. Try saying something to this person.',
-    'not-in-chat': 'Not sent — the chat had already ended.',
+    'slow-down': 'Not sent. You are sending messages too quickly.',
+    'repeat-opener': 'Not sent. That looks like a pasted opener. Try saying something to this person.',
+    'not-in-chat': 'Not sent. The chat had already ended.',
     empty: 'Not sent.',
   } as Record<AckFailure, string>,
   you: 'You',
@@ -210,7 +210,7 @@ const en = {
   conversation: 'Conversation',
   vLooking: 'Looking for someone…',
   vEnded: 'Chat ended',
-  vFailed: "Video couldn't connect — you can still text.",
+  vFailed: "Video couldn't connect, but you can still text.",
   vConnecting: 'Connecting video…',
   vCamOff: "Their camera is off",
   reveal: 'Show video',
@@ -226,16 +226,16 @@ const en = {
   theirVideo: "The other person's video",
 
   toasts: {
-    'report-sent': "Thanks — report sent. You won't be matched with them again.",
+    'report-sent': "Thanks, report sent. You won't be matched with them again.",
     blocked: "Blocked. You won't be matched with them again.",
-    restarting: 'The server is restarting — reconnecting shortly.',
-    'skipping-fast': 'You are skipping very quickly — hang on a moment.',
-    'reporting-fast': 'You have sent several reports — try again in a minute.',
+    restarting: 'The server is restarting. Reconnecting shortly.',
+    'skipping-fast': 'You are skipping very quickly. Hang on a moment.',
+    'reporting-fast': 'You have sent several reports. Try again in a minute.',
     'nothing-to-report': 'There is no recent chat to report.',
     'not-in-chat': 'There is no recent chat.',
     'bad-request': 'That message could not be understood.',
     'too-many-tabs': 'You have hala open in too many tabs. Close some and this one will reconnect.',
-    'video-failed': "Video couldn't connect between you two — text chat still works.",
+    'video-failed': "Video couldn't connect between you two, but text chat still works.",
   } as Record<ToastCode, string>,
 
   // banned
@@ -253,7 +253,7 @@ const en = {
   tryAgain: 'Try again',
 
   // transcript
-  transcriptHeader: (date: string) => `hala chat — ${date}`,
+  transcriptHeader: (date: string) => `hala chat · ${date}`,
   transcriptShared: (list: string) => `You both like: ${list}`,
   transcriptRandom: 'Random match',
   notSent: '(not sent)',
@@ -281,7 +281,7 @@ const en = {
     'Real Madrid, Barça, or neither?',
   ],
   aboutInterest: [
-    'So — what got you into {x}?',
+    'So, what got you into {x}?',
     "What's your favourite thing about {x} right now?",
     'How long have you been into {x}?',
     "What's one {x} recommendation you'd give a beginner?",
@@ -299,7 +299,7 @@ const ar: Dict = {
   dir: 'rtl',
   locale: 'ar-IQ',
   appName: 'هلا',
-  docTitle: 'هلا — احچي ويا شخص جديد',
+  docTitle: 'هلا · احچي ويا شخص جديد',
   newStranger: 'شخص جديد',
   newMessage: 'رسالة جديدة',
   online: (n) => `${n} متصل`,
@@ -508,7 +508,7 @@ const ar: Dict = {
   bannedExplain: 'هذا يصير تلقائياً لما أكثر من شخص يبلّغون على نفس الشخص، أو لما شي يتصرف مثل بوت سبام.',
   tryAgain: 'جرّب مرة ثانية',
 
-  transcriptHeader: (date) => `سالفة هلا — ${date}`,
+  transcriptHeader: (date) => `سالفة هلا · ${date}`,
   transcriptShared: (list) => `اهتمامات مشتركة: ${list}`,
   transcriptRandom: 'مطابقة عشوائية',
   notSent: '(ما انرسلت)',

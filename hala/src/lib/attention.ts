@@ -4,11 +4,12 @@
  */
 export interface TitleWords {
   base: string;
+  brand: string;
   stranger: string;
   message: string;
 }
 
-let words: TitleWords = { base: 'hala', stranger: 'New stranger', message: 'New message' };
+let words: TitleWords = { base: 'hala', brand: 'hala', stranger: 'New stranger', message: 'New message' };
 let unread = 0;
 
 if (typeof document !== 'undefined') {
@@ -29,6 +30,6 @@ export const attention = {
   poke(what: 'stranger' | 'message') {
     if (!document.hidden) return;
     unread++;
-    document.title = `(${unread}) ${words[what]} · ${words.base.split(' — ')[0]}`;
+    document.title = `(${unread}) ${words[what]} · ${words.brand}`;
   },
 };

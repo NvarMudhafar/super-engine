@@ -72,7 +72,7 @@ export function App() {
   useEffect(() => {
     const t = i18n.t;
     applyLang(i18n.lang, t.dir);
-    attention.setWords({ base: t.docTitle, stranger: t.newStranger, message: t.newMessage });
+    attention.setWords({ base: t.docTitle, brand: t.appName, stranger: t.newStranger, message: t.newMessage });
     document.querySelector('meta[name="description"]')?.setAttribute('content', t.lede);
   }, [i18n]);
   useEffect(() => {

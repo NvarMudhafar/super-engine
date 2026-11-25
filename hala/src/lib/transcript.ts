@@ -11,7 +11,7 @@ export function downloadTranscript(lines: ChatLine[], common: string[], t: Dict,
     '',
   ];
   const body = lines.map((l) => {
-    if (l.sys) return `— ${systemText(l.sys, t, lang)}`;
+    if (l.sys) return `· ${systemText(l.sys, t, lang)}`;
     const who = l.from === 'me' ? t.you : t.them;
     const failed = l.status === 'failed' ? ` ${t.notSent}` : '';
     return `[${time(l.ts)}] ${who}${failed}: ${l.text}`;
