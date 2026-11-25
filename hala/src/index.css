@@ -209,6 +209,46 @@ kbd {
   transform: scaleX(-1);
 }
 
+::selection {
+  background: color-mix(in srgb, var(--accent) 26%, transparent);
+}
+
+.me .bubble::selection {
+  background: rgb(255 255 255 / 0.35);
+}
+
+.messages,
+.modal {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+/* Our buttons have their own pressed look; drop the grey tap flash and the double-tap zoom delay. */
+button,
+summary,
+label,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+summary {
+  touch-action: manipulation;
+}
+
+/* In a chat, a pull-down must not reload the page and end it. */
+html:has(.chat-page),
+html:has(.chat-page) body {
+  overscroll-behavior: none;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -363,7 +403,8 @@ kbd {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  height: 64px;
+  height: calc(64px + env(safe-area-inset-top));
+  padding-top: env(safe-area-inset-top);
   padding-inline: max(16px, env(safe-area-inset-left)) max(16px, env(safe-area-inset-right));
   flex-shrink: 0;
 }
@@ -495,6 +536,20 @@ kbd {
 .hero {
   text-align: center;
   margin-bottom: 2rem;
+}
+
+.hero,
+.start-card,
+.promises {
+  animation: rise-in 0.45s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+.start-card {
+  animation-delay: 0.05s;
+}
+
+.promises {
+  animation-delay: 0.1s;
 }
 
 .eyebrow {
@@ -871,15 +926,22 @@ html:lang(ar) .promises li > div > span {
 }
 
 .tag-remove {
+  position: relative;
   display: inline-grid;
   place-items: center;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border: 0;
   border-radius: 999px;
   background: transparent;
   color: inherit;
   opacity: 0.7;
+}
+
+.tag-remove::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
 }
 
 .tag-remove:hover {
@@ -1020,6 +1082,41 @@ html:lang(ar) .promises li > div > span {
 
 .line.cont {
   margin-top: 0.2rem;
+}
+
+.lines .line {
+  animation: rise-in 0.22s ease-out both;
+}
+
+.jump-pill {
+  position: sticky;
+  bottom: 10px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: fit-content;
+  margin: 0.5rem auto 0;
+  padding: 0.45rem 0.95rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-on);
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--accent) 70%, transparent);
+  animation: rise-in 0.2s ease-out;
+}
+
+.jump-count {
+  min-width: 1.4em;
+  padding: 0 0.35em;
+  border-radius: 999px;
+  background: var(--accent-on);
+  color: var(--accent);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  text-align: center;
 }
 
 .line.system {
@@ -1515,6 +1612,13 @@ html:lang(ar) .bubble {
   animation: pop 0.18s ease-out;
 }
 
+@keyframes sheet-up {
+  from {
+    transform: translateY(48px);
+    opacity: 0.6;
+  }
+}
+
 @keyframes pop {
   from {
     opacity: 0;
@@ -1809,6 +1913,35 @@ html:lang(ar) .prose ol {
   .btn.report-btn {
     width: 36px;
     padding: 0;
+  }
+
+  .modal,
+  .modal-wide {
+    width: 100%;
+    max-width: 100%;
+    max-height: 92dvh;
+    margin: auto 0 0;
+    border-bottom: 0;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  .modal[open] {
+    animation: sheet-up 0.26s cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+
+  .modal-inner {
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  }
+
+  /* Sheet buttons stack full-width, main action on top. */
+  .modal-foot,
+  .modal-foot.split {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .modal-foot .btn {
+    width: 100%;
   }
 
   .lang-btn {

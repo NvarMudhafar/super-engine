@@ -54,6 +54,45 @@ export function ChatScreen({ snap, prefs, setPrefs }: { snap: Snapshot; prefs: P
     setConfirming(false);
   }, [snap.matchId, prefs.blurVideo]);
 
+  // The phone's back button returns to the start screen instead of leaving the site.
+  useEffect(() => {
+    history.pushState({ hala: 'chat' }, '');
+    let popped = false;
+    const onPop = () => {
+      if ((history.state as { hala?: string } | null)?.hala === 'chat') return; // still on a chat entry
+      popped = true;
+      session.stop();
+    };
+    window.addEventListener('popstate', onPop);
+    return () => {
+      window.removeEventListener('popstate', onPop);
+      if (!popped && (history.state as { hala?: string } | null)?.hala === 'chat') history.back();
+    };
+  }, []);
+
+  // Keep the phone's screen awake during a video chat.
+  const videoLive = snap.mode === 'video' && snap.phase === 'chatting';
+  useEffect(() => {
+    if (!videoLive || !('wakeLock' in navigator)) return;
+    let lock: WakeLockSentinel | null = null;
+    let done = false;
+    const acquire = () => {
+      if (document.visibilityState !== 'visible') return;
+      navigator.wakeLock
+        .request('screen')
+        .then((l) => (done ? void l.release() : (lock = l)))
+        .catch(() => {});
+    };
+    acquire();
+    // The browser drops the lock when the tab is hidden; take it back on return.
+    document.addEventListener('visibilitychange', acquire);
+    return () => {
+      done = true;
+      document.removeEventListener('visibilitychange', acquire);
+      void lock?.release().catch(() => {});
+    };
+  }, [videoLive]);
+
   // A report dialog left open after the chat is no longer reportable is stale.
   useEffect(() => {
     if (!snap.reportable) setReporting(false);

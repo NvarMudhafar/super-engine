@@ -1,9 +1,9 @@
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { placeOf } from '../../shared/interests.ts';
-import { listify, localizeTag, splitInterests, systemText, useI18n } from '../lib/i18n.ts';
+import { fmtNum, listify, localizeTag, splitInterests, systemText, useI18n } from '../lib/i18n.ts';
 import { session, type ChatLine, type Snapshot } from '../lib/session.ts';
 import { downloadTranscript } from '../lib/transcript.ts';
-import { DownloadIcon, FlagIcon, NextIcon, PinIcon, TeaScene } from './Icons.tsx';
+import { ArrowDownIcon, DownloadIcon, FlagIcon, NextIcon, PinIcon, TeaScene } from './Icons.tsx';
 
 function Searching({ snap }: { snap: Snapshot }) {
   const { t, lang } = useI18n();
@@ -51,18 +51,28 @@ export function MessageList({ snap, onReport }: { snap: Snapshot; onReport: () =
   const { t, lang } = useI18n();
   const scroller = useRef<HTMLDivElement>(null);
   const pinned = useRef(true);
+  const counted = useRef(0);
+  // Messages that arrived while the reader was scrolled up, looking back.
+  const [unseen, setUnseen] = useState(0);
 
   // Stick to the bottom unless the reader has scrolled up to look back.
   const onScroll = () => {
     const el = scroller.current;
-    if (el) pinned.current = el.scrollHeight - el.scrollTop - el.clientHeight < 80;
+    if (!el) return;
+    pinned.current = el.scrollHeight - el.scrollTop - el.clientHeight < 80;
+    if (pinned.current) setUnseen(0);
   };
   useLayoutEffect(() => {
     const el = scroller.current;
+    if (snap.lines.length < counted.current) counted.current = 0; // a new chat
+    const added = snap.lines.slice(counted.current).filter((l) => l.from === 'them').length;
+    counted.current = snap.lines.length;
     if (el && pinned.current) el.scrollTop = el.scrollHeight;
+    else if (added) setUnseen((n) => n + added);
   }, [snap.lines, snap.partnerTyping, snap.phase]);
   useEffect(() => {
     pinned.current = true;
+    setUnseen(0);
   }, [snap.matchId]);
   useEffect(() => {
     const el = scroller.current;
@@ -123,6 +133,16 @@ export function MessageList({ snap, onReport }: { snap: Snapshot; onReport: () =
           </span>
           {t.typing}
         </div>
+      )}
+      {unseen > 0 && (
+        <button
+          type="button"
+          className="jump-pill"
+          onClick={() => scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: 'smooth' })}
+        >
+          <ArrowDownIcon size={16} /> {t.newMessage}
+          {unseen > 1 && <span className="jump-count">{fmtNum(unseen, t)}</span>}
+        </button>
       )}
       {snap.phase === 'ended' && (
         <div className="ended-actions">

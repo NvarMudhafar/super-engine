@@ -115,6 +115,12 @@ export const CloseIcon = (p: IconProps) => (
   </Icon>
 );
 
+export const ArrowDownIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M12 5v14M6 13l6 6 6-6" />
+  </Icon>
+);
+
 export const NextIcon = (p: IconProps) => (
   <Icon {...p}>
     <path d="M5 5.5l9 6.5-9 6.5z" />
